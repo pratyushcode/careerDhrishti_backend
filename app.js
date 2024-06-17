@@ -20,7 +20,7 @@ const PORT=process.env.PORT||5000;
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'http://localhost:5173', // Allow requests from this origin
+    origin: 'https://career-dhrishti-frontend.vercel.app/', // Allow requests from this origin
   }));
 
 
