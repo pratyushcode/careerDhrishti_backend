@@ -8,7 +8,8 @@ const createAdminAccount=require("./src/scripts/admin");
 const dbconnect=require("./src/configuration/dbConfig");
 const Blogrouter = require("./src/routes/Blog");
 const Resourcerouter = require("./src/routes/Resource");
-
+const quizResultRoutes=require("./src/routes/QuizRouter")
+const userRoutes = require("./src/routes/userRoutes")
 
 dbconnect();
 createAdminAccount();
@@ -20,7 +21,8 @@ const PORT=process.env.PORT||5000;
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'http://localhost:5173', // Allow requests from this origin
+    // origin: 'http://localhost:5173',
+    origin:'https://careerdhrishti-backend.onrender.com' // Allow requests from this origin
   }));
 
 
@@ -28,7 +30,8 @@ app.use("/api/user",signupRoute);
 app.use("/api/auth",loginRoute);
 app.use("/api/blog",Blogrouter);
 app.use("/api/resource",Resourcerouter);
-
+app.use('/api/', quizResultRoutes);
+app.use('/api/users', userRoutes);
 
 
 app.listen(PORT,()=>
